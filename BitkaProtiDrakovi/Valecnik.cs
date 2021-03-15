@@ -33,6 +33,21 @@ namespace BitkaProtiDrakovi
             NasazenePredmety.Add(predmet);
         }
 
+        // Prepocita hracovi staty po nasazeni predmetu
+        public void PrepocitejStatyPoNasazeniPredmetu()
+        {
+            var vaha = 0;
+
+            foreach (var predmet in NasazenePredmety)
+            {
+                Sila += predmet.Utocnost;
+                Zivoty += predmet.Obrana;
+                vaha += predmet.Vaha;
+            }
+
+            Obratnost -= vaha / 100;
+        }
+
         // Pokud je valecnik dostatecne chytry, zobrazi vak
         public bool ZobraziSeVak()
         {
