@@ -5,15 +5,16 @@ namespace BitkaProtiDrakovi
 {
     class Valecnik
     {
-        // Valecnikovi atributy
+        // Válečníkovy atributy
         public int Sila { get; set;}
         public int Obratnost { get; set; }
         public int Inteligence { get; set; }
         public int Charizma { get; set; }
         public int Zivoty { get; set; }
         public List<Predmet> NasazenePredmety { get; set; }
+        public int ObsazeneRuce { get; set; }                   // Udává v kolika rukách právě hráč třímá zbraň
 
-        // Konstruktor vytvoreni valecnika
+        // Konstruktor vytvoření válečníka
         public Valecnik()
         {
             Random rnd = new Random();
@@ -23,17 +24,44 @@ namespace BitkaProtiDrakovi
             Charizma = rnd.Next(1, 100);
             Zivoty = rnd.Next(1, 100);
             NasazenePredmety = new List<Predmet>();
+            ObsazeneRuce = 0;
         }
 
-        // Nasadi valecnikovi predmet
+        // Nasadí válečníkovi předmět
         public void NasadPredmet(ref Predmet predmet)
         {
             if (predmet.Sila > Sila)
+            {
+                // Vyhodí výjimku, pokud válečníkova síla není dostatečná pro nasazení předmětu
                 throw new Exception("Nemůžeš nasadit tento předmět, protože na něj nemáš dostatečnou sílu");
+            }
+
+            if (predmet.JeZbran)
+            {
+                if (predmet.JeObourucni)
+                {
+                    if (ObsazeneRuce + 2 > 2)
+                    {
+                        // Vyhodí výjimku, pokud má válečník již plně obsazené ruce
+                        throw new Exception("Máš už plné ruce, neuneseš žádnou další zbraň");
+                    }
+
+                    ObsazeneRuce += 2;
+                }
+
+                if (ObsazeneRuce + 1 > 2)   
+                {
+                    // Vyhodí výjimku, pokud má válečník již plně obsazené ruce
+                    throw new Exception("Máš už plné ruce, neuneseš žádnou další zbraň");
+                }
+
+                ObsazeneRuce += 1;
+            }
+            
             NasazenePredmety.Add(predmet);
         }
 
-        // Prepocita hracovi staty po nasazeni predmetu
+        // Přepočítá hráčovi staty po nasazení předmětu
         public void PrepocitejStatyPoNasazeniPredmetu()
         {
             var vaha = 0;
@@ -45,22 +73,26 @@ namespace BitkaProtiDrakovi
                 vaha += predmet.Vaha;
             }
 
-            Obratnost -= vaha / 100;
+            // Za překročení váhy = 100 se ubírá jeden bod obratnosti
+            if (vaha > 100)
+            {
+                Obratnost -= 1;
+            }
         }
 
-        // Pokud je valecnik dostatecne chytry, zobrazi vak
+        // Pokud je válečník dostatečně chytrý, zobrazí se mu vak
         public bool ZobraziSeVak()
         {
             return (Inteligence >= 4);
         }
 
-        // Utok predstavuje soucet sily valecnika a sily jeho predmetu
-        public int Utok(int silaPredmetu)
+        // Útok představuje hráčovu sílu
+        public int Utok()
         {
-            return Sila + silaPredmetu;
+            return Sila;
         }
 
-        // Vraci true nebo false na zaklade toho, zda se povedlo uhnout utoku
+        // Vrací true nebo false na základě toho, zda se podařilo či nepodařilo uhnout útoku
         public static bool UhybPredUtokem()
         {
             Random rnd = new Random();
@@ -70,7 +102,7 @@ namespace BitkaProtiDrakovi
             return (uhyb == 1);
         }
 
-        // Metoda pro vypis vlastnosti vytvoreneho valecnika
+        // Metoda pro výpis vlastností válečníka
         public override string ToString()
         {
             string ret = "";
