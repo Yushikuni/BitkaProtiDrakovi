@@ -55,7 +55,7 @@ namespace BitkaProtiDrakovi
             ret += "Inteligence:\t" + Inteligence + "\n";
             ret += "Charizma:\t" + Charizma + "\n";
             ret += "Životy:\t\t" + Zivoty + "\n";
-
+            ret += new string('=', 30);
             return ret;
         }
     }

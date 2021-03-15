@@ -11,6 +11,7 @@ namespace BitkaProtiDrakovi
         static void Main()
         {
             Valecnik valecnik = new Valecnik();
+            Drak drak = new Drak();
             Predmet[] predmety = new Predmet[5];
 
             predmety[0] = new Predmet("Dýka", 2, 0, 0, 2, true, false);
@@ -22,6 +23,21 @@ namespace BitkaProtiDrakovi
             VypisPredmety(ref predmety);
 
             Console.WriteLine("\n" + valecnik);
+            Console.WriteLine("\n" + drak);
+
+
+
+
+            //hra samotna:
+            //uvod
+            Console.WriteLine("\n Kalítor je království, kde vládnou ženy.\n Jako dobrodruh, který se touží usadit v hlavním městě Zaa.\n" +
+                " Musíš ale splnit královnin úkol, a to zachránit jediného potomka,\n tedy toho legitimního, z věže v předaleké zemi, kam ho unesl tmavý drak.\n" +
+                " Teď si říkáš, jak to vím, co? Viděla jsem takového létajícího ještěra v noci.\n" +
+                " Mělo to lehký nádech tmy a něčeho asi zeleného. Navíc takové ještěrky mají rady vysoká místa. \n Nebo snad ne?\n Tak co tu ještě okouníš. Upaluj!\n");
+
+
+
+
             Console.ReadLine();
         }
 
