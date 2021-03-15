@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Drak.cs" />
-    <Compile Include="Predmety.cs" />
+    <Compile Include="Predmet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Valecnik.cs" />
