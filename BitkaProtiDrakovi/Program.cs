@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BitkaProtiDrakovi
 {
@@ -34,16 +30,16 @@ namespace BitkaProtiDrakovi
         public static void VypisPredmety(ref Predmet[] predmety)
         {
             // Formatovany vypis hlavicky tabulky se soubory
-            Console.WriteLine(string.Format("{0, -10}", "Index") + 
-                              string.Format("{0, -20}", "Název") + 
-                              string.Format("{0, -10}", "Síla") +
-                              string.Format("{0, -10}", "Útočnost") +
-                              string.Format("{0, -10}", "Obrana") +
-                              string.Format("{0, -10}", "Váha"));
+            Console.WriteLine($"{"Index",-10}" +
+                              $"{"Název",-20}" +
+                              $"{"Síla",-10}" +
+                              $"{"Útočnost",-10}" +
+                              $"{"Obrana",-10}" +
+                              $"{"Váha",-10}");
 
             for (var i = 0; i < predmety.Length; i++)
             {
-                Console.Write(string.Format("{0, -10}", i));    // Vypise index predmetu
+                Console.Write($"{i,-10}");    // Vypise index predmetu
                 Console.WriteLine(predmety[i]);                 // Vypise predmet
             }
         }
