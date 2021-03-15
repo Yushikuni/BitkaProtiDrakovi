@@ -15,9 +15,8 @@ namespace BitkaProtiDrakovi
         public int ObsazeneRuce { get; set; }                   // Udává v kolika rukách právě hráč třímá zbraň
 
         // Konstruktor vytvoření válečníka
-        public Valecnik()
+        public Valecnik(ref Random rnd)
         {
-            Random rnd = new Random();
             Sila = rnd.Next(1, 100);
             Obratnost = rnd.Next(1, 100);
             Inteligence = rnd.Next(1, 100);
@@ -122,6 +121,7 @@ namespace BitkaProtiDrakovi
             ret += "Inteligence:\t" + Inteligence + "\n";
             ret += "Charizma:\t" + Charizma + "\n";
             ret += "Životy:\t\t" + Zivoty + "\n";
+            ret += new string('=', 30);
 
             return ret;
         }

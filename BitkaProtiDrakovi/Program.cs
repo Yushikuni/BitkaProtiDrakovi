@@ -6,13 +6,15 @@ namespace BitkaProtiDrakovi
     {
         static void Main()
         {
-            Valecnik valecnik = new Valecnik();         // Vytvoreni noveho valecnika
+            Random rnd = new Random();
+            Valecnik valecnik = new Valecnik(ref rnd);         // Vytvoreni noveho valecnika
+            Drak drak = new Drak(ref rnd);
             Predmet[] predmety = new Predmet[5];        // Vytvoreni pole peti objektu typu predmet
 
             NactiPredmety(ref predmety);
             VypisPredmety(ref predmety);
             Console.WriteLine("\n" + valecnik);         // Zobrazí staty válečníka před nasazením předmětů
-            
+            Console.WriteLine("\n" + drak);
             NasadPredmety(ref valecnik, ref predmety);
             valecnik.PrepocitejStatyPoNasazeniPredmetu();
 
