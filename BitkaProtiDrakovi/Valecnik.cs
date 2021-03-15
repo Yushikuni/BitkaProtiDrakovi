@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BitkaProtiDrakovi
 {
@@ -29,7 +25,7 @@ namespace BitkaProtiDrakovi
         // Pokud je valecnik dostatecne chytry, zobrazi vak
         public bool ZobraziSeVak()
         {
-            return (Inteligence >= 4) ? true : false;
+            return (Inteligence >= 4);
         }
 
         // Utok predstavuje soucet sily valecnika a sily jeho predmetu
@@ -45,7 +41,7 @@ namespace BitkaProtiDrakovi
 
             var uhyb = rnd.Next(0, 2);  // vraci integer s hodnotou 0 ci 1 (0 = neuspech, 1 = uspech pri uteku)
 
-            return (uhyb == 1) ? true : false;
+            return (uhyb == 1);
         }
     }
 }
