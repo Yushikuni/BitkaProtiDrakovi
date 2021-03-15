@@ -1,74 +1,62 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BitkaProtiDrakovi
 {
     class Valecnik
     {
-        Random rnd = new Random();
-        //proc private? nechci menit vlastnosti valecnika pres hlavni cyklus 
-        private int Sila = -1;
-        private int Obratnost = -1;
-        private int Inteligence = -1;
-        private int Charizma = -1;
-        private int Zivoty = -1;
-        
-        //vytvoreni valecnika
-       public void VytvorValecinka(int sila, int obratnost, int inteligence, int charizma, int zivoty)
+        // Valecnikovi atributy
+        public int Sila { get; set;}
+        public int Obratnost { get; set; }
+        public int Inteligence { get; set; }
+        public int Charizma { get; set; }
+        public int Zivoty { get; set; }
+
+        // Kontrustor vytvoreni valecnika
+        public Valecnik()
         {
-            sila = rnd.Next(1, 100);
-            System.Threading.Thread.Sleep(100);
-            Sila = sila;
-
-            obratnost = rnd.Next(1, 100);
-            System.Threading.Thread.Sleep(100);
-            Obratnost = obratnost;
-
-            inteligence = rnd.Next(1, 100);
-            System.Threading.Thread.Sleep(100);
-            Inteligence = inteligence;
-
-            charizma = rnd.Next(1, 100);
-            System.Threading.Thread.Sleep(100);
-            Charizma = charizma;
-
-            zivoty = rnd.Next(1, 100);
-            System.Threading.Thread.Sleep(100);
-            Zivoty = zivoty;
-        }
-        //pokud je valecnik chytry muze najit ve vaku susenky
-        public bool ZobraziSeVak(int inteligence)
-        {
-            if(inteligence>=4)
-            {
-                return true;
-            }
-            return false;
-        }
-        //utok je sloucen pres silu valecnika a silu predmetu
-        public virtual int Utok(int silaValecnika, int silaPredmetu)
-        {
-            int sila = silaValecnika + silaPredmetu;
-            return sila;
+            Random rnd = new Random();
+            Sila = rnd.Next(1, 100);
+            Obratnost = rnd.Next(1, 100);
+            Inteligence = rnd.Next(1, 100);
+            Charizma = rnd.Next(1, 100);
+            Zivoty = rnd.Next(1, 100);
         }
 
-        //uhyb pred utokem draka je roven 50% jako u hodu minci
-        public virtual bool UhybPredUtokem(Random rnd)
+        // Pokud je valecnik dostatecne chytry, zobrazi vak
+        public bool ZobraziSeVak()
         {
-            //pokud je rnd roven 1 uhyb se provedl a pokud ne tak se nepovedl
-            if(int.Parse(rnd.ToString()) == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            return (Inteligence >= 4);
         }
-        
+
+        // Utok predstavuje soucet sily valecnika a sily jeho predmetu
+        public int Utok(int silaPredmetu)
+        {
+            return Sila + silaPredmetu;
+        }
+
+        // Vraci true nebo false na zaklade toho, zda se povedlo uhnout utoku
+        public static bool UhybPredUtokem()
+        {
+            Random rnd = new Random();
+
+            var uhyb = rnd.Next(0, 2);  // vraci integer s hodnotou 0 ci 1 (0 = neuspech, 1 = uspech pri uteku)
+
+            return (uhyb == 1);
+        }
+
+        // Metoda pro vypis vlastnosti vytvoreneho valecnika
+        public override string ToString()
+        {
+            string ret = "";
+
+            ret += new string('=', 10) + " VÁLEČNÍK " + new string('=', 10) + "\n";
+            ret += "Síla:\t\t" + Sila + "\n";
+            ret += "Obratnost:\t" + Obratnost + "\n";
+            ret += "Inteligence:\t" + Inteligence + "\n";
+            ret += "Charizma:\t" + Charizma + "\n";
+            ret += "Životy:\t\t" + Zivoty + "\n";
+
+            return ret;
+        }
     }
 }
