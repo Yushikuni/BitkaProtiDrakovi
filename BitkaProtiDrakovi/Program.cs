@@ -10,6 +10,7 @@ namespace BitkaProtiDrakovi
     {
         static void Main(string[] args)
         {
+            Valecnik petr = new Valecnik();
         }
     }
 }
