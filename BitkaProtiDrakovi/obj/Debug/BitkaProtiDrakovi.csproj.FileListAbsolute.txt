@@ -1,0 +1,7 @@
+C:\Users\Atlan\Desktop\Czechitas\C# 2\BitkaProtiDrakovi\BitkaProtiDrakovi\bin\Debug\BitkaProtiDrakovi.exe.config
+C:\Users\Atlan\Desktop\Czechitas\C# 2\BitkaProtiDrakovi\BitkaProtiDrakovi\bin\Debug\BitkaProtiDrakovi.exe
+C:\Users\Atlan\Desktop\Czechitas\C# 2\BitkaProtiDrakovi\BitkaProtiDrakovi\bin\Debug\BitkaProtiDrakovi.pdb
+C:\Users\Atlan\Desktop\Czechitas\C# 2\BitkaProtiDrakovi\BitkaProtiDrakovi\obj\Debug\BitkaProtiDrakovi.csprojAssemblyReference.cache
+C:\Users\Atlan\Desktop\Czechitas\C# 2\BitkaProtiDrakovi\BitkaProtiDrakovi\obj\Debug\BitkaProtiDrakovi.csproj.CoreCompileInputs.cache
+C:\Users\Atlan\Desktop\Czechitas\C# 2\BitkaProtiDrakovi\BitkaProtiDrakovi\obj\Debug\BitkaProtiDrakovi.exe
+C:\Users\Atlan\Desktop\Czechitas\C# 2\BitkaProtiDrakovi\BitkaProtiDrakovi\obj\Debug\BitkaProtiDrakovi.pdb
