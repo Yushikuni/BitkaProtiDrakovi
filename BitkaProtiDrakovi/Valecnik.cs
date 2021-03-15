@@ -28,12 +28,18 @@ namespace BitkaProtiDrakovi
         }
 
         // Nasadí válečníkovi předmět
-        public void NasadPredmet(ref Predmet predmet)
+        public bool NasadPredmet(ref Predmet predmet)
         {
             if (predmet.Sila > Sila)
             {
                 // Vyhodí výjimku, pokud válečníkova síla není dostatečná pro nasazení předmětu
-                throw new Exception("Nemůžeš nasadit tento předmět, protože na něj nemáš dostatečnou sílu");
+                throw new Exception("Nemůžeš nasadit tento předmět, protože na něj nemáš dostatečnou sílu!");
+            }
+
+            if (NasazenePredmety.Contains(predmet))
+            {
+                // Vyhodí výjimku, pokud se hráč pokusí nasadit předmět, který již má nasazený
+                throw new Exception("Nemůžeš si nasadit předmět, který již nosíš!");
             }
 
             if (predmet.JeZbran)
@@ -43,22 +49,25 @@ namespace BitkaProtiDrakovi
                     if (ObsazeneRuce + 2 > 2)
                     {
                         // Vyhodí výjimku, pokud má válečník již plně obsazené ruce
-                        throw new Exception("Máš už plné ruce, neuneseš žádnou další zbraň");
+                        throw new Exception("Máš už plné ruce, neuneseš žádnou další zbraň!");
                     }
 
                     ObsazeneRuce += 2;
                 }
-
-                if (ObsazeneRuce + 1 > 2)   
+                else
                 {
-                    // Vyhodí výjimku, pokud má válečník již plně obsazené ruce
-                    throw new Exception("Máš už plné ruce, neuneseš žádnou další zbraň");
-                }
+                    if (ObsazeneRuce + 1 > 2) 
+                    {
+                        // Vyhodí výjimku, pokud má válečník již plně obsazené ruce
+                        throw new Exception("Máš už plné ruce, neuneseš žádnou další zbraň!");
+                    }
 
-                ObsazeneRuce += 1;
+                    ObsazeneRuce += 1;
+                }
             }
             
             NasazenePredmety.Add(predmet);
+            return true;
         }
 
         // Přepočítá hráčovi staty po nasazení předmětu

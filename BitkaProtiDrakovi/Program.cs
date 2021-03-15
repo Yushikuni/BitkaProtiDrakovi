@@ -11,9 +11,57 @@ namespace BitkaProtiDrakovi
 
             NactiPredmety(ref predmety);
             VypisPredmety(ref predmety);
+            Console.WriteLine("\n" + valecnik);
+            
+            NasadPredmety(ref valecnik, ref predmety);
+            valecnik.PrepocitejStatyPoNasazeniPredmetu();
 
             Console.WriteLine("\n" + valecnik);
             Console.ReadLine();
+        }
+
+        // Nasadí válečníkovy předměty
+        public static void NasadPredmety(ref Valecnik valecnik, ref Predmet[] predmety)
+        {
+            int idx;        // index zvoleného předmětu
+
+            while (true)
+            {
+                Console.WriteLine("\nZadej index předmětu, který chceš nasadit \n(-1 pro ukončení zadávání)\n(6 pro vypsání seznamu předmětů): ");
+                idx = Convert.ToInt32(Console.ReadLine());
+
+                // Kontroluje, zda bylo požádáno o ukončení nasazování předmětů
+                if (idx == -1)
+                {
+                    break;
+                }
+
+                // Kontroluje, zda bylo požádáno u opětovný výpis předmětů
+                if (idx == 6)
+                {
+                    VypisPredmety(ref predmety);
+                    continue;
+                }
+
+                // Kontroluje, zda nebylo překročeno rozmezí pro volbu v menu
+                if (idx < 0 || idx > 6)
+                {
+                    throw new Exception("Byl zadán neodpovídající index předmětu!");
+                }
+
+                // Kontroluje, zda byl úspěšně nasazen předmět a nasazuje předmět
+                try
+                {
+                    if (valecnik.NasadPredmet(ref predmety[idx]))
+                    {
+                        Console.WriteLine($"Předmět {predmety[idx].Nazev} byl úspěšně nasazen!");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
         }
 
         // Nacte do pole predmetu, ktere obdrzi jako argument
