@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BitkaProtiDrakovi
 {
@@ -10,8 +11,9 @@ namespace BitkaProtiDrakovi
         public int Inteligence { get; set; }
         public int Charizma { get; set; }
         public int Zivoty { get; set; }
+        public List<Predmet> NasazenePredmety { get; set; }
 
-        // Kontrustor vytvoreni valecnika
+        // Konstruktor vytvoreni valecnika
         public Valecnik()
         {
             Random rnd = new Random();
@@ -20,6 +22,15 @@ namespace BitkaProtiDrakovi
             Inteligence = rnd.Next(1, 100);
             Charizma = rnd.Next(1, 100);
             Zivoty = rnd.Next(1, 100);
+            NasazenePredmety = new List<Predmet>();
+        }
+
+        // Nasadi valecnikovi predmet
+        public void NasadPredmet(ref Predmet predmet)
+        {
+            if (predmet.Sila > Sila)
+                throw new Exception("Nemůžeš nasadit tento předmět, protože na něj nemáš dostatečnou sílu");
+            NasazenePredmety.Add(predmet);
         }
 
         // Pokud je valecnik dostatecne chytry, zobrazi vak

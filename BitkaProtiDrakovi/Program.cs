@@ -39,8 +39,8 @@ namespace BitkaProtiDrakovi
 
             for (var i = 0; i < predmety.Length; i++)
             {
-                Console.Write($"{i,-10}");    // Vypise index predmetu
-                Console.WriteLine(predmety[i]);                 // Vypise predmet
+                Console.Write($"{i,-10}");          // Vypise index predmetu
+                Console.WriteLine(predmety[i]);     // Vypise predmet
             }
         }
     }
