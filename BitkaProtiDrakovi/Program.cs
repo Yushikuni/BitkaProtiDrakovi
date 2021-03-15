@@ -11,7 +11,7 @@ namespace BitkaProtiDrakovi
 
             NactiPredmety(ref predmety);
             VypisPredmety(ref predmety);
-            Console.WriteLine("\n" + valecnik);
+            Console.WriteLine("\n" + valecnik);         // Zobrazí staty válečníka před nasazením předmětů
             
             NasadPredmety(ref valecnik, ref predmety);
             valecnik.PrepocitejStatyPoNasazeniPredmetu();
@@ -27,7 +27,7 @@ namespace BitkaProtiDrakovi
 
             while (true)
             {
-                Console.WriteLine("\nZadej index předmětu, který chceš nasadit \n(-1 pro ukončení zadávání)\n(6 pro vypsání seznamu předmětů): ");
+                Console.WriteLine("\nZadej index předmětu, který chceš nasadit \n(-1 pro ukončení zadávání)\n(5 pro vypsání seznamu předmětů): ");
                 idx = Convert.ToInt32(Console.ReadLine());
 
                 // Kontroluje, zda bylo požádáno o ukončení nasazování předmětů
@@ -37,16 +37,10 @@ namespace BitkaProtiDrakovi
                 }
 
                 // Kontroluje, zda bylo požádáno u opětovný výpis předmětů
-                if (idx == 6)
+                if (idx == 5)
                 {
                     VypisPredmety(ref predmety);
                     continue;
-                }
-
-                // Kontroluje, zda nebylo překročeno rozmezí pro volbu v menu
-                if (idx < 0 || idx > 6)
-                {
-                    throw new Exception("Byl zadán neodpovídající index předmětu!");
                 }
 
                 // Kontroluje, zda byl úspěšně nasazen předmět a nasazuje předmět
@@ -56,6 +50,10 @@ namespace BitkaProtiDrakovi
                     {
                         Console.WriteLine($"Předmět {predmety[idx].Nazev} byl úspěšně nasazen!");
                     }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    Console.WriteLine("Zadaný index neodpovídá žádnému předmětu");
                 }
                 catch (Exception e)
                 {
