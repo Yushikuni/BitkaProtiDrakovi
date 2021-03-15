@@ -28,7 +28,11 @@
         {
             string ret = "";
 
-            ret += Nazev.ToUpper() + "\t" + Sila + "\t" + Utocnost + "\t" + Obrana + "\t" + Vaha;
+            ret += string.Format("{0, -20}", Nazev.ToUpper()) +
+                   string.Format("{0, -10}", Sila) +
+                   string.Format("{0, -10}", Utocnost) +
+                   string.Format("{0, -10}", Obrana) +
+                   string.Format("{0, -10}", Vaha);
             
             return ret;
         }
