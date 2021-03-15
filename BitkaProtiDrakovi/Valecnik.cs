@@ -43,5 +43,20 @@ namespace BitkaProtiDrakovi
 
             return (uhyb == 1);
         }
+
+        // Metoda pro vypis vlastnosti vytvoreneho valecnika
+        public override string ToString()
+        {
+            string ret = "";
+
+            ret += new string('=', 10) + " VÁLEČNÍK " + new string('=', 10) + "\n";
+            ret += "Síla:\t\t" + Sila + "\n";
+            ret += "Obratnost:\t" + Obratnost + "\n";
+            ret += "Inteligence:\t" + Inteligence + "\n";
+            ret += "Charizma:\t" + Charizma + "\n";
+            ret += "Životy:\t\t" + Zivoty + "\n";
+
+            return ret;
+        }
     }
 }

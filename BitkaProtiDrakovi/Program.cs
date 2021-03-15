@@ -10,7 +10,9 @@ namespace BitkaProtiDrakovi
     {
         static void Main(string[] args)
         {
-            Valecnik petr = new Valecnik();
+            Valecnik valecnik = new Valecnik();
+            Console.WriteLine(valecnik);
+            Console.ReadLine();
         }
     }
 }
