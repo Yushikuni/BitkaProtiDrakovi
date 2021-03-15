@@ -28,11 +28,11 @@
         {
             string ret = "";
 
-            ret += string.Format("{0, -20}", Nazev.ToUpper()) +
-                   string.Format("{0, -10}", Sila) +
-                   string.Format("{0, -10}", Utocnost) +
-                   string.Format("{0, -10}", Obrana) +
-                   string.Format("{0, -10}", Vaha);
+            ret += $"{Nazev.ToUpper(),-20}" +
+                   $"{Sila,-10}" +
+                   $"{Utocnost,-10}" +
+                   $"{Obrana,-10}" +
+                   $"{Vaha,-10}";
             
             return ret;
         }
