@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace BitkaProtiDrakovi
 {
     class Predmety
-    {
+    { 
         int sila = 0;
         int utocnost = 0;
         int obrana = 0;
