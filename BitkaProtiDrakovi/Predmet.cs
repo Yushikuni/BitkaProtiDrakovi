@@ -8,8 +8,8 @@
         public int Utocnost { get; set; }
         public int Obrana { get; set; }
         public int Vaha { get; set; }
-        public bool JeZbran { get; set; }
-        public bool JeObourucni { get; set; }
+        public bool JeZbran { get; set; }       // true = je zbraň, false = není zbraň
+        public bool JeObourucni { get; set; }   // true = je obouruční zbraň, false = není obouruční zbraň
 
         // Konstruktor noveho predmetu
         public Predmet(string nazev, int sila, int utocnost, int obrana, int vaha, bool jeZbran, bool jeObourucni)
