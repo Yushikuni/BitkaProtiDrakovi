@@ -174,11 +174,11 @@ namespace BitkaProtiDrakovi
         public static void EpilogPrvni()
         {
             Console.WriteLine("\nÚspěšně jsi zachránil prince, gratulace...." +
-                "\nTen votrapa ti už začíná lízt krkem, naneštěstí předtím než bys ho zabil sám, uvidíš hradby města Zaa." +
+                "\nTen votrapa ti už začíná lízt krkem, naneštěstí předtím, než bys ho zabil sám, uvidíš hradby města Zaa." +
                 "\nVšichni tě vítají hrdino...." +
                 "\nKrálovna tě příjmá v paláci a uděluje ti titul Rytíře kalitorského, " +
                 "\nk tomu náleží klidné hlídky, kde se nic neděje a luxusní domeček..." +
-                "\nJsi poctěn a příjmáš." +
+                "\nJsi poctěn, příjimáš." +
                 "\nKonec.");
             Console.WriteLine("STISKNI ENTER A JDI PAŘIT WOWKO!!!!");
         }
@@ -186,7 +186,7 @@ namespace BitkaProtiDrakovi
         //druhý epilog?
         public static void EpilogDruhy()
         {
-            Console.WriteLine("\n\nškoda, žádaná reinkarnace tu není...\nEnter pro konec");
+            Console.WriteLine("\n\nŠkoda, žádná reinkarnace tu není...\nEnter pro konec");
         }
 
         // Nasadí válečníkovy předměty
