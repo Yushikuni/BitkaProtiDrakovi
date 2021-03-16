@@ -16,12 +16,17 @@ namespace BitkaProtiDrakovi
             VypisPocatekPribehu();                  // Vypíše příběh do konzole
             VypisPredmety(ref predmety);    //vypíše přeměty v tuhle
 
+
+            //možnost nasazení předmětů a zvednutí statusů pro válečníka
             NasadPredmety(ref valecnik, ref predmety);
             valecnik.PrepocitejStatyPoNasazeniPredmetu();
 
-
+            //další část příběhu
             DalsiCastPribehu();
+            //tohle je boj!
             Boj(ref valecnik, ref drak);
+
+            //výsledek souboje ovlivní epilog.
             if(valecnik.JeNazivu())
             {
                 EpilogPrvni();
@@ -106,7 +111,8 @@ namespace BitkaProtiDrakovi
             {
                 if (valecnik.ZobraziSeVak())    // Zvítězil hráč
                 {
-                    Console.WriteLine("Použil jsi sušenky Milánek, drak Ti vydal prince bez boje!");
+                    Console.WriteLine("\nVzpomněl jsi si na svůj vak a vytáhl jsi z něj předmět: Sušenky Milánek, jsou křupavé a vhodné na předaleké poutě." +
+                        "\n Použil jsi sušenky Milánek, drak Ti vydal prince bez boje!");
                     break;  
                 }
 
@@ -170,7 +176,7 @@ namespace BitkaProtiDrakovi
         }
 
 
-        //epilog
+        //epilog ten správný
         public static void EpilogPrvni()
         {
             Console.WriteLine("\nÚspěšně jsi zachránil prince, gratulace...." +
@@ -183,7 +189,7 @@ namespace BitkaProtiDrakovi
             Console.WriteLine("STISKNI ENTER A JDI PAŘIT WOWKO!!!!");
         }
 
-        //druhý epilog?
+        //druhý epilog kvůli smrti hráče
         public static void EpilogDruhy()
         {
             Console.WriteLine("\n\nŠkoda, žádná reinkarnace tu není...\nEnter pro konec");
