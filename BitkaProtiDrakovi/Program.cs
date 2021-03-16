@@ -8,19 +8,60 @@ namespace BitkaProtiDrakovi
         {
             Random rnd = new Random();
             Valecnik valecnik = new Valecnik(ref rnd);         // Vytvoreni noveho valecnika
-            Drak drak = new Drak(ref rnd);
+            Drak drak = new Drak(ref rnd);                      // Vytvoření nového draka
             Predmet[] predmety = new Predmet[5];        // Vytvoreni pole peti objektu typu predmet
+            int volba;                                  // Proměnná pro ukládání hráčovy volby užité v menu hry
 
-            Console.WriteLine("\n" + valecnik);         // Zobrazí staty válečníka před nasazením předmětů
-            Console.WriteLine("\n" + drak);
-            Boj(ref valecnik, ref drak);
-            //VypisPribeh();
-            //NactiPredmety(ref predmety);
-            //VypisPredmety(ref predmety);
-            //NasadPredmety(ref valecnik, ref predmety);
-            //valecnik.PrepocitejStatyPoNasazeniPredmetu();
-            //Console.WriteLine("\n" + valecnik);
-            Console.ReadLine();
+            NactiPredmety(ref predmety);    // Načte předměty do pole předmětů
+            VypisPribeh();                  // Vypíše předmluvu k příběhu do konzole
+
+            while (true)
+            {
+                VypisMenu();
+                Console.Write("\nZadej svou volbu: ");
+                volba = int.Parse(Console.ReadLine());
+
+                switch (volba)
+                {
+                    case 0:
+                        Console.WriteLine("Hra se ukončí stisknutím klávesy Enter");
+                        Console.ReadLine();
+                        return;
+                    case 1:
+                        Console.WriteLine("\n" + valecnik);
+                        break;
+                    case 2:
+                        Console.WriteLine("\n" + drak);
+                        break;
+                    case 3:
+                        VypisPredmety(ref predmety);
+                        break;
+                    case 4:
+                        NasadPredmety(ref valecnik, ref predmety);
+                        valecnik.PrepocitejStatyPoNasazeniPredmetu();
+                        break;
+                    case 5:
+                        Boj(ref valecnik, ref drak);
+                        break;
+                    default:
+                        Console.WriteLine("Byla zadána hodnota mimo rozsah. Ukončuji program po stisknutím klávesy Enter.");
+                        Console.ReadLine();
+                        return;
+                }
+            }
+        }
+
+        // Vypíše menu ovládání hry
+        public static void VypisMenu()
+        {
+            Console.WriteLine("\n" + new string('-', 12) + " MENU " + new string('-', 12));
+            Console.WriteLine("0 - Ukonči hru");
+            Console.WriteLine("1 - Vypiš staty hráče");
+            Console.WriteLine("2 - Vypiš staty draka");
+            Console.WriteLine("3 - Vypiš seznam předmětů");
+            Console.WriteLine("4 - Nasaď předměty");
+            Console.WriteLine("5 - Bojuj s drakem");
+            Console.WriteLine(new string('-', 30));
         }
 
         // Simuluje boj mezi drakem a hráčem

@@ -8,7 +8,7 @@ namespace BitkaProtiDrakovi
         // Válečníkovy atributy
         public int Sila { get; set;}
         public int Obratnost { get; set; }
-        public int Inteligence { get; set; } = 2;
+        public int Inteligence { get; set; }
         public int Charizma { get; set; }
         public int Zivoty { get; set; }
         public List<Predmet> NasazenePredmety { get; set; }
@@ -19,7 +19,7 @@ namespace BitkaProtiDrakovi
         {
             Sila = rnd.Next(1, 100);
             Obratnost = rnd.Next(1, 100);
-            //Inteligence = rnd.Next(1, 100);
+            Inteligence = rnd.Next(1, 100);
             Charizma = rnd.Next(1, 100);
             Zivoty = rnd.Next(1, 100);
             NasazenePredmety = new List<Predmet>();
