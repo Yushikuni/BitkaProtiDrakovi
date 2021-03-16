@@ -11,17 +11,69 @@ namespace BitkaProtiDrakovi
             Drak drak = new Drak(ref rnd);
             Predmet[] predmety = new Predmet[5];        // Vytvoreni pole peti objektu typu predmet
 
-            //VypisPribeh();
-            NactiPredmety(ref predmety);
-            VypisPredmety(ref predmety);
             Console.WriteLine("\n" + valecnik);         // Zobrazí staty válečníka před nasazením předmětů
             Console.WriteLine("\n" + drak);
-            NasadPredmety(ref valecnik, ref predmety);
-            valecnik.PrepocitejStatyPoNasazeniPredmetu();
-
-            Console.WriteLine("\n" + valecnik);
+            Boj(ref valecnik, ref drak);
+            //VypisPribeh();
+            //NactiPredmety(ref predmety);
+            //VypisPredmety(ref predmety);
+            //NasadPredmety(ref valecnik, ref predmety);
+            //valecnik.PrepocitejStatyPoNasazeniPredmetu();
+            //Console.WriteLine("\n" + valecnik);
             Console.ReadLine();
         }
+
+        // Simuluje boj mezi drakem a hráčem
+        public static void Boj(ref Valecnik valecnik, ref Drak drak)
+        {
+            Random rnd = new Random();
+            int utoci = 1;
+
+            while (true)
+            {
+                if (valecnik.ZobraziSeVak())    // Zvítězil hráč
+                {
+                    Console.WriteLine("Použil jsi sušenky Milánek, drak Ti vydal prince bez boje!");
+                    break;  
+                }
+
+                if (!valecnik.JeNazivu())   // Zvítězil drak
+                {
+                    Console.WriteLine("Zemřel jsi krutou a bolestivou smrtí!");
+                    break;  
+                }
+
+                if (!drak.JeNazivu())   // Zvítězil hráč
+                {
+                    Console.WriteLine("Porazil jsi draka a zachránil prince!");
+                    break;  
+                }
+
+                if (utoci == 1) // Útočí hráč
+                {
+                    drak.UtrziZraneni(valecnik.Utok());
+                    Console.WriteLine("Drak utržil zranění!");
+                    Console.WriteLine($"Drakovi zbývá {drak.Zivoty} životů.");
+                    utoci = 2;  // Další v pořadí útočení bude drak
+                }
+                else // Útočí drak
+                {
+                    if (valecnik.UhybPredUtokem(ref rnd))
+                    {
+                        Console.WriteLine("Hráč se úspěšně vyhnul zranění!");
+                        Console.WriteLine($"Hráčovi zbývá {valecnik.Zivoty} životů.");
+                    }
+                    else
+                    {
+                        valecnik.UtrziZraneni(drak.Utok());
+                        Console.WriteLine("Hráč utržil zranění!");
+                        Console.WriteLine($"Hráčovi zbývá {valecnik.Zivoty} životů.");
+                    }
+
+                    utoci = 1;  // Další v pořadí útočení bude hráč
+                }
+            }
+        } 
 
         // Vypíše předmluvu příběhu
         public static void VypisPribeh()

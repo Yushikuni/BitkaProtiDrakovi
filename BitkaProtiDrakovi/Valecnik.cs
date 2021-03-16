@@ -8,7 +8,7 @@ namespace BitkaProtiDrakovi
         // Válečníkovy atributy
         public int Sila { get; set;}
         public int Obratnost { get; set; }
-        public int Inteligence { get; set; }
+        public int Inteligence { get; set; } = 2;
         public int Charizma { get; set; }
         public int Zivoty { get; set; }
         public List<Predmet> NasazenePredmety { get; set; }
@@ -19,7 +19,7 @@ namespace BitkaProtiDrakovi
         {
             Sila = rnd.Next(1, 100);
             Obratnost = rnd.Next(1, 100);
-            Inteligence = rnd.Next(1, 100);
+            //Inteligence = rnd.Next(1, 100);
             Charizma = rnd.Next(1, 100);
             Zivoty = rnd.Next(1, 100);
             NasazenePredmety = new List<Predmet>();
@@ -89,26 +89,24 @@ namespace BitkaProtiDrakovi
         }
 
         // Pokud je válečník dostatečně chytrý, zobrazí se mu vak
-        public bool ZobraziSeVak()
-        {
-            return (Inteligence >= 4);
-        }
+        public bool ZobraziSeVak() => (Inteligence >= 4);
 
         // Útok představuje hráčovu sílu
-        public int Utok()
-        {
-            return Sila;
-        }
+        public int Utok() => Sila;
+
+        // Hráč utrží zranění
+        public void UtrziZraneni(int utrzeneZraneni) => Zivoty -= utrzeneZraneni;
 
         // Vrací true nebo false na základě toho, zda se podařilo či nepodařilo uhnout útoku
-        public static bool UhybPredUtokem()
+        public bool UhybPredUtokem(ref Random rnd)
         {
-            Random rnd = new Random();
-
             var uhyb = rnd.Next(0, 2);  // vraci integer s hodnotou 0 ci 1 (0 = neuspech, 1 = uspech pri uteku)
 
             return (uhyb == 1);
         }
+
+        // Vrací true nebo false na základě toho, zda je hráč naživu
+        public bool JeNazivu() => (Zivoty > 0);
 
         // Metoda pro výpis vlastností válečníka
         public override string ToString()

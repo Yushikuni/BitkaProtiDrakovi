@@ -26,10 +26,13 @@ namespace BitkaProtiDrakovi
         }
 
         // Metoda pro drakův útok
-        public int Utok()
-        {
-            return Sila + Strach;
-        }
+        public int Utok() => Sila + Strach;
+
+        // Vrací true nebo false na základě toho, zda je drak naživu
+        public bool JeNazivu() => (Zivoty > 0);
+
+        // Drak utrží zranění
+        public void UtrziZraneni(int utrzeneZraneni) => Zivoty -= utrzeneZraneni;
 
         // Vypsání statů draka 
         public override string ToString()
