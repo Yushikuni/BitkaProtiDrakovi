@@ -14,19 +14,19 @@ namespace BitkaProtiDrakovi
 
             NactiPredmety(ref predmety);    // Načte předměty do pole předmětů
             VypisPocatekPribehu();                  // Vypíše příběh do konzole
-            VypisPredmety(ref predmety);    //vypíše přeměty v tuhle
+            VypisPredmety(ref predmety);    //Vypíše přeměty v tuhle
 
 
-            //možnost nasazení předmětů a zvednutí statusů pro válečníka
+            //Možnost nasazení předmětů a zvednutí statusů pro válečníka
             NasadPredmety(ref valecnik, ref predmety);
             valecnik.PrepocitejStatyPoNasazeniPredmetu();
 
-            //další část příběhu
+            //Další část příběhu
             DalsiCastPribehu();
-            //tohle je boj!
+            //Tohle je simulovaný boj
             Boj(ref valecnik, ref drak);
 
-            //výsledek souboje ovlivní epilog.
+            //Výsledek souboje ovlivní epilog.
             if(valecnik.JeNazivu())
             {
                 EpilogPrvni();
@@ -237,20 +237,20 @@ namespace BitkaProtiDrakovi
             }
         }
 
-        // Nacte do pole predmetu, ktere obdrzi jako argument
+        // Načte do pole předmětů, které obdrži jako argument
         public static void NactiPredmety(ref Predmet[] predmety)
         {
             predmety[0] = new Predmet("Dýka", 2, 0, 0, 2, true, false);
             predmety[1] = new Predmet("Meč jednoruční", 5, 0, 0, 30, true, false);
             predmety[2] = new Predmet("Meč obouruční", 7, 1, 0, 85, true, true);
             predmety[3] = new Predmet("Plátové brnění", 0, 0, 100, 95, false, false);
-            predmety[4] = new Predmet("Štít", 0, 0, 1, 50, true, false); //přepsala jsem jednu hodnotu tak, že štít se bere jako zbraň, kvůli kolizi s obouručákem
+            predmety[4] = new Predmet("Štít", 0, 0, 1, 50, true, false); // Přepsala jsem jednu hodnotu tak, že štít se bere jako zbraň, kvůli kolizi s obouručákem
         }
 
-        // Vypise pole predmetu, ktere obdrzi jako argument
+        // Vypíše pole předmětů, které obdrži jako argument
         public static void VypisPredmety(ref Predmet[] predmety)
         {
-            // Formatovany vypis hlavicky tabulky se soubory
+            // Formatovaný vypis hlavičky tabulky se soubory
             Console.WriteLine($"{"Index",-10}" +
                               $"{"Název",-20}" +
                               $"{"Síla",-10}" +
@@ -260,8 +260,8 @@ namespace BitkaProtiDrakovi
 
             for (var i = 0; i < predmety.Length; i++)
             {
-                Console.Write($"{i,-10}");          // Vypise index predmetu
-                Console.WriteLine(predmety[i]);     // Vypise predmet
+                Console.Write($"{i,-10}");          // Vypíše index předmětu
+                Console.WriteLine(predmety[i]);     // Vypíše předmět
             }
         }
     }
