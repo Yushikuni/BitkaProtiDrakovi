@@ -11,6 +11,7 @@ namespace BitkaProtiDrakovi
             Drak drak = new Drak(ref rnd);
             Predmet[] predmety = new Predmet[5];        // Vytvoreni pole peti objektu typu predmet
 
+            //VypisPribeh();
             NactiPredmety(ref predmety);
             VypisPredmety(ref predmety);
             Console.WriteLine("\n" + valecnik);         // Zobrazí staty válečníka před nasazením předmětů
@@ -20,6 +21,15 @@ namespace BitkaProtiDrakovi
 
             Console.WriteLine("\n" + valecnik);
             Console.ReadLine();
+        }
+
+        // Vypíše předmluvu příběhu
+        public static void VypisPribeh()
+        {
+            Console.WriteLine("Kalítor je království, kde vládnou ženy. Jako dobrodruh, který se touží usadit v hlavním městě Zaa.) \n" +
+                              "Musíš ale splnit královnin úkol, a to zachránit jediného potomka, tedy toho legitimního (klepy), z věže v předaleké zemi, kam ho unesl tmavý drak.\n" +
+                              "Teď si říkáš, jak to vím, co? Viděla jsem takového létajícího ještěra v noci. Mělo to lehký nádech tmy a něčeho asi zeleného. Navíc takové ještěrky mají rady vysoká místa.\n" +
+                              "Nebo snad ne? Tak co tu ještě okouníš. Upaluj! ");
         }
 
         // Nasadí válečníkovy předměty
