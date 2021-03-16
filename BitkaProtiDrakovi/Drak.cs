@@ -12,17 +12,17 @@ namespace BitkaProtiDrakovi
         public int Sila { get; set; }
         public int Obratnost { get; set; }
         public int Inteligence { get; set; }
-        public int Strach { get; set; }
+        public int Strach { get; set; }         // Strach modifikuje drakův útok
         public int Zivoty { get; set; }
 
         // Vytvoření draka
         public Drak(ref Random rnd)
         {
-            Sila = rnd.Next(1, 100) + 50;
+            Sila = rnd.Next(1, 100) + 50;       // Drakova síla je navýšena o 50
             Obratnost = rnd.Next(1, 100);
             Inteligence = rnd.Next(1, 100);
             Strach = rnd.Next(1, 100);
-            Zivoty = rnd.Next(1, 100) + 50;
+            Zivoty = rnd.Next(1, 100) + 50;     // Drakovy životy jsou navýšeny o 50
         }
 
         // Metoda pro drakův útok
