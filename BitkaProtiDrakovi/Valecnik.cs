@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BitkaProtiDrakovi
 {
-    class Valecnik
+    class Valecnik : IUtils
     {
         // Válečníkovy atributy
         public int Sila { get; set;}
