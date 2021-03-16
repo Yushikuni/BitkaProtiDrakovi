@@ -6,43 +6,56 @@ namespace BitkaProtiDrakovi
     {
         static void Main()
         {
-            Random rnd = new Random();
-            Valecnik valecnik = new Valecnik(ref rnd);         // Vytvoreni noveho valecnika
-            Drak drak = new Drak(ref rnd);                      // Vytvoření nového draka
-            Predmet[] predmety = new Predmet[5];        // Vytvoreni pole peti objektu typu predmet
-            int volba;                                  // Proměnná pro ukládání hráčovy volby užité v menu hry
+            Random rnd = new Random();                              // Vytvoření nové instance generátoru pseudonáhodných čísel
+            Valecnik valecnik = new Valecnik(ref rnd);              // Vytvoreni noveho valecnika
+            Drak drak = new Drak(ref rnd);                          // Vytvoření nového draka
+            Predmet[] predmety = new Predmet[5];                    // Vytvoreni pole peti objektu typu predmet
+            int volba;                                              // Proměnná pro ukládání hráčovy volby užité v menu hry
 
             NactiPredmety(ref predmety);    // Načte předměty do pole předmětů
-            VypisPribeh();                  // Vypíše předmluvu k příběhu do konzole
+            VypisPribeh();                  // Vypíše příběh do konzole
 
             while (true)
             {
-                VypisMenu();
+                VypisMenu();                                        // Vypíše formátované menu
                 Console.Write("\nZadej svou volbu: ");
-                volba = int.Parse(Console.ReadLine());
+                volba = Convert.ToInt32(Console.ReadLine());        // Načte hráčovu volbu do proměnné volba
 
                 switch (volba)
                 {
+                    // Ukončí hru
                     case 0:
                         Console.WriteLine("Hra se ukončí stisknutím klávesy Enter");
                         Console.ReadLine();
                         return;
+
+                    // Vypíše staty válečníka do konzole
                     case 1:
                         Console.WriteLine("\n" + valecnik);
                         break;
+
+                    // Vypíše staty draka do konzole
                     case 2:
                         Console.WriteLine("\n" + drak);
                         break;
+
+                    // Vypíše tabulku s předměty do konzole
                     case 3:
                         VypisPredmety(ref predmety);
                         break;
+
+                    // Umožní hráči nasadit předměty
                     case 4:
                         NasadPredmety(ref valecnik, ref predmety);
-                        valecnik.PrepocitejStatyPoNasazeniPredmetu();
+                        valecnik.PrepocitejStatyPoNasazeniPredmetu();       // Po nasazení předmětů dojde k přepočítání síly, životů a případného postihu za překročenou váhu
                         break;
+
+                    // Spustí simulaci boje s drakem
                     case 5:
                         Boj(ref valecnik, ref drak);
                         break;
+
+                    // Ukončí program v případě, že hráč zadá hodnotu mimo očekávané rozmezí
                     default:
                         Console.WriteLine("Byla zadána hodnota mimo rozsah. Ukončuji program po stisknutím klávesy Enter.");
                         Console.ReadLine();
@@ -54,21 +67,21 @@ namespace BitkaProtiDrakovi
         // Vypíše menu ovládání hry
         public static void VypisMenu()
         {
-            Console.WriteLine("\n" + new string('-', 12) + " MENU " + new string('-', 12));
+            Console.WriteLine("\n" + new string('-', 12) + " MENU " + new string('-', 12));     // Formátovaný výpis hlavičky
             Console.WriteLine("0 - Ukonči hru");
             Console.WriteLine("1 - Vypiš staty hráče");
             Console.WriteLine("2 - Vypiš staty draka");
             Console.WriteLine("3 - Vypiš seznam předmětů");
             Console.WriteLine("4 - Nasaď předměty");
             Console.WriteLine("5 - Bojuj s drakem");
-            Console.WriteLine(new string('-', 30));
+            Console.WriteLine(new string('-', 30));     // Formátovaný výpis patičky
         }
 
         // Simuluje boj mezi drakem a hráčem
         public static void Boj(ref Valecnik valecnik, ref Drak drak)
         {
-            Random rnd = new Random();
-            int utoci = 1;
+            Random rnd = new Random();      // Generátor pseudonáhodných čísel pro boj s drakem
+            int utoci = 1;                  // Proměnná určující, kdo je na řadě s útočením (1 = hráč, 2 = drak)
 
             while (true)
             {
@@ -92,21 +105,21 @@ namespace BitkaProtiDrakovi
 
                 if (utoci == 1) // Útočí hráč
                 {
-                    drak.UtrziZraneni(valecnik.Utok());
+                    drak.UtrziZraneni(valecnik.Utok());         // Drak utrží zranění odpovídající hráčovu útoku
                     Console.WriteLine("Drak utržil zranění!");
                     Console.WriteLine($"Drakovi zbývá {drak.Zivoty} životů.");
                     utoci = 2;  // Další v pořadí útočení bude drak
                 }
                 else // Útočí drak
                 {
-                    if (valecnik.UhybPredUtokem(ref rnd))
+                    if (valecnik.UhybPredUtokem(ref rnd))       // Zjistí, zda byl hráč schopen se vyhnout drakovu útoku
                     {
                         Console.WriteLine("Hráč se úspěšně vyhnul zranění!");
                         Console.WriteLine($"Hráčovi zbývá {valecnik.Zivoty} životů.");
                     }
                     else
                     {
-                        valecnik.UtrziZraneni(drak.Utok());
+                        valecnik.UtrziZraneni(drak.Utok());     // Hráč utrží zranění odpovídající drakovu útoku
                         Console.WriteLine("Hráč utržil zranění!");
                         Console.WriteLine($"Hráčovi zbývá {valecnik.Zivoty} životů.");
                     }
@@ -156,7 +169,7 @@ namespace BitkaProtiDrakovi
                         Console.WriteLine($"Předmět {predmety[idx].Nazev} byl úspěšně nasazen!");
                     }
                 }
-                catch (IndexOutOfRangeException)
+                catch (IndexOutOfRangeException)    // Hráč zadal index předmětu, který je mimo povolený rozsah
                 {
                     Console.WriteLine("Zadaný index neodpovídá žádnému předmětu");
                 }
