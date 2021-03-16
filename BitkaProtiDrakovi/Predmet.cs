@@ -8,8 +8,8 @@
         public int Utocnost { get; set; }
         public int Obrana { get; set; }
         public int Vaha { get; set; }
-        public bool JeZbran { get; set; }
-        public bool JeObourucni { get; set; }
+        public bool JeZbran { get; set; }       // true = je zbraň, false = není zbraň
+        public bool JeObourucni { get; set; }   // true = je obouruční zbraň, false = není obouruční zbraň
 
         // Konstruktor noveho predmetu
         public Predmet(string nazev, int sila, int utocnost, int obrana, int vaha, bool jeZbran, bool jeObourucni)
@@ -28,11 +28,11 @@
         {
             string ret = "";
 
-            ret += string.Format("{0, -20}", Nazev.ToUpper()) +
-                   string.Format("{0, -10}", Sila) +
-                   string.Format("{0, -10}", Utocnost) +
-                   string.Format("{0, -10}", Obrana) +
-                   string.Format("{0, -10}", Vaha);
+            ret += $"{Nazev.ToUpper(),-20}" +
+                   $"{Sila,-10}" +
+                   $"{Utocnost,-10}" +
+                   $"{Obrana,-10}" +
+                   $"{Vaha,-10}";
             
             return ret;
         }

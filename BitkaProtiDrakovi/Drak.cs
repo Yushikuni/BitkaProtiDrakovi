@@ -1,37 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BitkaProtiDrakovi
 {
-    class Drak
+    class Drak : IUtils
     {
-        //vlastnosti draka
+        // Vlastnosti draka
         public int Sila { get; set; }
         public int Obratnost { get; set; }
         public int Inteligence { get; set; }
-        public int Strach { get; set; }
+        public int Strach { get; set; }         // Strach modifikuje drakův útok
         public int Zivoty { get; set; }
 
-        //vytvoreni draka
-        public Drak()
+        // Vytvoření draka
+        public Drak(ref Random rnd)
         {
-            System.Threading.Thread.Sleep(100);
-            Random rnd = new Random();
-            Sila = rnd.Next(1, 100) + 50;
+            Sila = rnd.Next(1, 100) + 50;       // Drakova síla je navýšena o 50
             Obratnost = rnd.Next(1, 100);
             Inteligence = rnd.Next(1, 100);
             Strach = rnd.Next(1, 100);
-            Zivoty = rnd.Next(1, 100) + 50;
+            Zivoty = rnd.Next(1, 100) + 50;     // Drakovy životy jsou navýšeny o 50
         }
 
-        public int Utok()
-        {
-            return Sila + Strach;
-        }
+        // Metoda pro drakův útok
+        public int Utok() => Sila + Strach;
 
+        // Vrací true nebo false na základě toho, zda je drak naživu
+        public bool JeNazivu() => (Zivoty > 0);
+
+        // Drak utrží zranění
+        public void UtrziZraneni(int utrzeneZraneni) => Zivoty -= utrzeneZraneni;
+
+        // Vypsání statů draka 
         public override string ToString()
         {
             string ret = "";
