@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BitkaProtiDrakovi
 {
-    class Valecnik
+    class Valecnik : IUtils
     {
         // Válečníkovy atributy
         public int Sila { get; set;}
@@ -11,23 +11,22 @@ namespace BitkaProtiDrakovi
         public int Inteligence { get; set; }
         public int Charizma { get; set; }
         public int Zivoty { get; set; }
-        public List<Predmet> NasazenePredmety { get; set; }
+        public List<Predmet> NasazenePredmety { get; set; }     // Seznam nasazených předmětů
         public int ObsazeneRuce { get; set; }                   // Udává v kolika rukách právě hráč třímá zbraň
 
         // Konstruktor vytvoření válečníka
-        public Valecnik()
+        public Valecnik(ref Random rnd)
         {
-            Random rnd = new Random();
             Sila = rnd.Next(1, 100);
             Obratnost = rnd.Next(1, 100);
             Inteligence = rnd.Next(1, 100);
             Charizma = rnd.Next(1, 100);
             Zivoty = rnd.Next(1, 100);
-            NasazenePredmety = new List<Predmet>();
+            NasazenePredmety = new List<Predmet>();             // Při vytvoření válečníka je třeba alokovat paměť pro seznam
             ObsazeneRuce = 0;
         }
 
-        // Nasadí válečníkovi předmět
+        // Nasadí válečníkovi předmět, vrací true pokud byl předmět úspěšně nasazen
         public bool NasadPredmet(ref Predmet predmet)
         {
             if (predmet.Sila > Sila)
@@ -66,7 +65,7 @@ namespace BitkaProtiDrakovi
                 }
             }
             
-            NasazenePredmety.Add(predmet);
+            NasazenePredmety.Add(predmet);      // Přidá vybraný předmět do seznamu předmětů
             return true;
         }
 
@@ -75,6 +74,7 @@ namespace BitkaProtiDrakovi
         {
             var vaha = 0;
 
+            // Projde seznam všech nasazených předmětů a upraví sílu a životy hráče
             foreach (var predmet in NasazenePredmety)
             {
                 Sila += predmet.Utocnost;
@@ -90,26 +90,24 @@ namespace BitkaProtiDrakovi
         }
 
         // Pokud je válečník dostatečně chytrý, zobrazí se mu vak
-        public bool ZobraziSeVak()
-        {
-            return (Inteligence >= 4);
-        }
+        public bool ZobraziSeVak() => (Inteligence >= 4);
 
         // Útok představuje hráčovu sílu
-        public int Utok()
-        {
-            return Sila;
-        }
+        public int Utok() => Sila;
+
+        // Hráč utrží zranění
+        public void UtrziZraneni(int utrzeneZraneni) => Zivoty -= utrzeneZraneni;
 
         // Vrací true nebo false na základě toho, zda se podařilo či nepodařilo uhnout útoku
-        public static bool UhybPredUtokem()
+        public bool UhybPredUtokem(ref Random rnd)
         {
-            Random rnd = new Random();
-
             var uhyb = rnd.Next(0, 2);  // vraci integer s hodnotou 0 ci 1 (0 = neuspech, 1 = uspech pri uteku)
 
             return (uhyb == 1);
         }
+
+        // Vrací true nebo false na základě toho, zda je hráč naživu
+        public bool JeNazivu() => (Zivoty > 0);
 
         // Metoda pro výpis vlastností válečníka
         public override string ToString()
@@ -122,6 +120,7 @@ namespace BitkaProtiDrakovi
             ret += "Inteligence:\t" + Inteligence + "\n";
             ret += "Charizma:\t" + Charizma + "\n";
             ret += "Životy:\t\t" + Zivoty + "\n";
+            ret += new string('=', 30);
 
             return ret;
         }
