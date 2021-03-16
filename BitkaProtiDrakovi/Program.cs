@@ -176,8 +176,9 @@ namespace BitkaProtiDrakovi
             Console.WriteLine("\nÚspěšně jsi zachránil prince, gratulace...." +
                 "\nTen votrapa ti už začíná lízt krkem, naneštěstí předtím než bys ho zabil sám, uvidíš hradby města Zaa." +
                 "\nVšichni tě vítají hrdino...." +
-                "\nKrálovna tě příjmá v paláci a uděluje ti titul Rytíře Kalitorského, ktomu náleží klidné hlídky, kde se nic neděje a luxusní domeček..." +
-                "\nJsi poctěn příjmáš." +
+                "\nKrálovna tě příjmá v paláci a uděluje ti titul Rytíře kalitorského, " +
+                "\nk tomu náleží klidné hlídky, kde se nic neděje a luxusní domeček..." +
+                "\nJsi poctěn a příjmáš." +
                 "\nKonec.");
             Console.WriteLine("STISKNI ENTER A JDI PAŘIT WOWKO!!!!");
         }
