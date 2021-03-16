@@ -14,11 +14,11 @@ namespace BitkaProtiDrakovi
         // Vytvoření draka
         public Drak(ref Random rnd)
         {
-            Sila = rnd.Next(1, 100) + 50;       // Drakova síla je navýšena o 50
-            Obratnost = rnd.Next(1, 100);
-            Inteligence = rnd.Next(1, 100);
-            Strach = rnd.Next(1, 100);
-            Zivoty = rnd.Next(1, 100) + 50;     // Drakovy životy jsou navýšeny o 50
+            Sila = rnd.Next(1, 10) + 50;       // Drakova síla je navýšena o 50
+            Obratnost = rnd.Next(1, 10);
+            Inteligence = rnd.Next(1, 10);
+            Strach = rnd.Next(1, 10);
+            Zivoty = rnd.Next(1, 10) + 50;     // Drakovy životy jsou navýšeny o 50
         }
 
         // Metoda pro drakův útok

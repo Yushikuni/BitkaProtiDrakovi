@@ -17,11 +17,11 @@ namespace BitkaProtiDrakovi
         // Konstruktor vytvoření válečníka
         public Valecnik(ref Random rnd)
         {
-            Sila = rnd.Next(1, 100);
-            Obratnost = rnd.Next(1, 100);
-            Inteligence = rnd.Next(1, 100);
-            Charizma = rnd.Next(1, 100);
-            Zivoty = rnd.Next(1, 100);
+            Sila = rnd.Next(1, 10);
+            Obratnost = rnd.Next(1, 10);
+            Inteligence = rnd.Next(1, 10);
+            Charizma = rnd.Next(1, 10);
+            Zivoty = rnd.Next(1, 10);
             NasazenePredmety = new List<Predmet>();             // Při vytvoření válečníka je třeba alokovat paměť pro seznam
             ObsazeneRuce = 0;
         }
