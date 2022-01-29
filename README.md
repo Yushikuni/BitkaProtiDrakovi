@@ -1,4 +1,5 @@
-# BitkaProtiDrakovi
+# Bitka s Drakem 
+
 *Kalítor je království, kde vládnou ženy. Jako dobrodruh, který se touží usadit v hlavním městě Zaa. Musíš ale splnit královnin úkol, a to zachránit jediného potomka, tedy toho legitimního (klepy 😀), z věže v předaleké zemi, kam ho unesl tmavý drak. Teď si říkáš, jak to vím, co? Viděla jsem takového létajícího ještěra v noci. Mělo to lehký nádech tmy a něčeho asi zeleného. Navíc takové ještěrky mají rady vysoká místa 😐. Nebo snad ne? Tak co tu ještě okouníš. Upaluj!*
 
 Hra je inspirována Dračím Doupětem, jde o publikaci fantasy hry na hrdiny (Dračí doupě zjednodušená pravidla, průvodce hrou).
@@ -39,3 +40,13 @@ Drak bude mít podobné vlastnosti jako válečník. Pro zajímavější souboj 
 Dále je potřeba vymyslet útoky, jak pro draka, tak i pro válečníka. Síla útoku se odvíjí od celkové síly, takže nesmíme zapomenout na vlastnosti předmětů. Pro zjednodušení se zde nebude počítat celková váha, ve smyslu uražení vzdálenosti. Takže defekt to bude mít jen na obratnost. Pak bude potřeba vymyslet i úhyb, k tomu se využije obratnost. Pro zjednodušení bude šance na úhyb 50%. 
 
 Pojem vak slouží k představě a není důležitá Třída. Stačí si zapamatovat to, že válečník má k dispozici sušenky 😀. 
+
+### images:
+
+![NazevHry](https://user-images.githubusercontent.com/42646031/151656327-f3763258-7b19-44ed-b8cd-13e116ef198c.png)
+
+![ZacatekHry](https://user-images.githubusercontent.com/42646031/151656330-2aca4947-a9e9-43e9-95d5-5884b34ec391.png)
+
+![PrvniKonecHry](https://user-images.githubusercontent.com/42646031/151656333-dc5206af-9172-4c0e-aa48-422889656f8e.png)
+
+![DruhyKonecHry](https://user-images.githubusercontent.com/42646031/151656334-ad92121a-8d61-4e77-981d-90bb8fd55497.png)
