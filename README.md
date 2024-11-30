@@ -50,3 +50,6 @@ Pojem vak slouží k představě a není důležitá Třída. Stačí si zapamat
 ![PrvniKonecHry](https://user-images.githubusercontent.com/42646031/151656333-dc5206af-9172-4c0e-aa48-422889656f8e.png)
 
 ![DruhyKonecHry](https://user-images.githubusercontent.com/42646031/151656334-ad92121a-8d61-4e77-981d-90bb8fd55497.png)
+
+
+eng verze: https://github.com/Yushikuni/dragonFight/
